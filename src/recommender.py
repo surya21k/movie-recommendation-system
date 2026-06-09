@@ -15,15 +15,13 @@ ratings = pd.read_csv(
     "data/raw/ratings.dat",
     sep="::",
     engine="python",
-    encoding="latin-1",
-    names=["userId", "movieId", "rating", "timestamp"]
+    names=["userId","movieId","rating","timestamp"]
 )   
 users = pd.read_csv(
     "data/raw/users.dat",       
     sep="::",
     engine="python",
-    encoding="latin-1",
-    names=["userId", "gender", "age", "occupation", "zip"]
+    names=["userId","gender","age","occupation","zipCode"]
 )    
     
 
