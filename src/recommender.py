@@ -5,12 +5,27 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # Load data
 movies = pd.read_csv(
-    r"C:\surya\ml\Movie-Recommendation-System\data\raw\movies.dat",
+    "data/raw/movies.dat",
     sep="::",
     engine="python",
     encoding="latin-1",
     names=["movieId", "title", "genres"]
 )
+ratings = pd.read_csv(
+    "data/raw/ratings.dat",
+    sep="::",
+    engine="python",
+    encoding="latin-1",
+    names=["userId", "movieId", "rating", "timestamp"]
+)   
+users = pd.read_csv(
+    "data/raw/users.dat",       
+    sep="::",
+    engine="python",
+    encoding="latin-1",
+    names=["userId", "gender", "age", "occupation", "zip"]
+)    
+    
 
 # TF-IDF
 tfidf = TfidfVectorizer(stop_words="english")
