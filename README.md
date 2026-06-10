@@ -1,6 +1,6 @@
 # Movie Recommendation System
 
-A content-based movie recommendation system built using the MovieLens 1M dataset.
+Movie Recommendation System using Content-Based Filtering
 
 ## Features
 
@@ -25,3 +25,7 @@ MovieLens 1M Dataset
 pip install -r requirements.txt
 
 streamlit run app.py
+
+## Live Demo
+
+https://surya-movie-recommendation-system-2gjp6vagwljzoaerpjhmcg.streamlit.app/
