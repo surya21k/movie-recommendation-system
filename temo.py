@@ -1,10 +1,7 @@
-from src.hybrid import (
-    hybrid_recommend
-)
+from src.utils import fetch_poster
 
-result = hybrid_recommend(
-    "Toy Story (1995)"
+print(
+    fetch_poster(
+        "Jumanji (1995)"
+    )
 )
-
-for movie in result:
-    print(movie)
