@@ -1,4 +1,7 @@
 import streamlit as st
+from src.content_based import get_recommendations
+from src.item_cf import get_similar_movies
+from src.hybrid import hybrid_recommend
 
 from src.recommender import (
     get_recommendations,
@@ -26,15 +29,38 @@ selected_movie = st.selectbox(
     get_movie_list()
 )
 
+model_type = st.selectbox(
+    "Recommendation Model",
+    [
+        "Content-Based",
+        "Item-Based",
+        "Hybrid"
+    ]
+)
+
 if st.button("Recommend"):
 
-    st.success(
-        f"You selected: {selected_movie}"
+    st.info(
+        f"Using {model_type}"
     )
 
-    recommendations = get_recommendations(
-        selected_movie
-    )
+    if model_type == "Content-Based":
+
+        recommendations = get_recommendations(
+            selected_movie
+        )
+
+    elif model_type == "Item-Based":
+
+        recommendations = get_similar_movies(
+            selected_movie
+        )["title"]
+
+    else:
+
+        recommendations = hybrid_recommend(
+            selected_movie
+        )
 
     st.subheader("Recommended Movies")
 
