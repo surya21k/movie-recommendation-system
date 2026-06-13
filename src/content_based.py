@@ -1,27 +1,19 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
+import joblib
 
 from src.data_loader import load_movies
 
 movies = load_movies()
 
-tfidf = TfidfVectorizer(
-    stop_words="english"
+cosine_sim = joblib.load(
+    "models/cosine_sim.pkl"
 )
 
-tfidf_matrix = tfidf.fit_transform(
-    movies["genres"]
+indices = joblib.load(
+    "models/indices.pkl"
 )
-
-cosine_sim = cosine_similarity(
-    tfidf_matrix
-)
-
-indices = pd.Series(
-    movies.index,
-    index=movies["title"]
-).drop_duplicates()
 
 
 def get_recommendations(
